@@ -8,5 +8,6 @@ def teste(request):
 
 
 def exibir_evento(request):
-    evento = Eventos
+    evento = {"nome": "teste",
+              }
     return render(request= request, context={"evento": evento},template_name="agenda/exibir_evento.html")

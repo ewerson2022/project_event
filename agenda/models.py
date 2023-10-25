@@ -1,16 +1,12 @@
 from django.db import models
 
-class Evento:
-    def __init__(self, nome, categoria, local = None, link=None):
-        self.nome = nome
-        self.categoria = categoria
-        self.local = local
-        self.link = link   
+class Categoria(models.Model):
+    nome = models.CharField(max_length=256,unique=True)
 
-aula_python = Evento("aula de python", "backend", "rio de janeiro")
-aula_js = Evento("aula de java script", "fullstack", link= "https://tamarcado.com/")
 
-Eventos = [
-    aula_python,
-    aula_js,
-]
+class Evento(models.Model):
+    
+    nome = models.CharField(max_length=256) 
+    categoria = models.ForeignKey("categoria", on_delete=models.SET_NULL,null=True)
+    local = models.CharField(max_length=256, blank=True)
+    link =  models.CharField(max_length=256, blank=True)
