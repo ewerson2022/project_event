@@ -26,16 +26,22 @@
             <tbody>
 
                 {% for evento in eventos%}
-                
-                <tr>
-                    <td> {{evento.nome}} </td>
-                    <td> {{evento.categoria}} </td>
-                    {% if evento.link %}
-                        <td>  {{evento.link}} </td>
-                    {% elif evento.local %}
-                        <td>  {{evento.local}} </td>
-                    {% endif %}
-                </tr>
+                    <tr>
+                        <td> {{evento.nome}} </td>
+                        <td> {{evento.categoria}} </td>
+                        {% if evento.link %}
+                            <td>  {{evento.link}} </td>
+                        {% elif evento.local %}
+                            <td>  {{evento.local}} </td>
+                        {% endif %}
+                        <td> {% if evento.data %} 
+                                {{ evento.data | date:" d/m/Y" }}
+                             {% else %}
+                                 a definir.
+                             {% endif %}</td>
+
+                        <td><a href="{% url 'exibir_eventos' evento.id %}">ver detalhes</a></td>
+                    </tr>
                 {% endfor %}
 
             </tbody>

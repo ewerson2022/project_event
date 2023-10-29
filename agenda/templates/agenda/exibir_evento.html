@@ -1,6 +1,23 @@
 
-        
-    <html>  
-        <h1> Evento:  {{evento.nome}}</h1>
-        <p> categoria:  {{evento.categoria}}</p>
-    </html>
+
+
+<html>
+    <h1>Evento: {{evento.nome}}</h1>
+    <p>categoria: {{evento.categoria}}</p>
+    {% if evento.local %}<p>local: {{ evento.local }}</p> {% endif %}
+    {% if evento.link %}<p>link:  {{ evento.link }}</p> {% endif %}
+    <p>data: {% if evento.data %} 
+                 {{ evento.data | date:" d/m/Y" }}
+             {% else %}
+                a definir.
+             {% endif %}</p>
+    <p>Quantidade de participantes: {{evento.participantes}} </p>
+    <br />
+    <form action="" method="">
+        <input type="submit" value="participar">
+    </form>
+    <div>
+    <a href={% url 'listar_eventos' %}> ir para listagem de eventos</a>
+    </div>
+
+</html>
