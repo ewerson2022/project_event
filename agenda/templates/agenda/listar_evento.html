@@ -1,0 +1,46 @@
+    <html>  
+        <head> 
+            <style>
+                table {
+                    border-collapse: collapse;
+                }
+
+                td,  th {
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 15px;
+
+                }
+            </style>
+        </head>
+        <table> 
+            <thead>
+                <tr>
+                 <th>evento</th>
+                 <th> categoria</th>
+                 <th>link/local</th>
+                 <th>data</th>
+                 <th>ação</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for evento in eventos%}
+                
+                <tr>
+                    <td> {{evento.nome}} </td>
+                    <td> {{evento.categoria}} </td>
+                    {% if evento.link %}
+                        <td>  {{evento.link}} </td>
+                    {% elif evento.local %}
+                        <td>  {{evento.local}} </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+                
+                
+    </html>
+   
